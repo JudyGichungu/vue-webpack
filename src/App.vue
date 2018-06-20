@@ -1,6 +1,19 @@
 <template>
   <div class="container">
-    <h3>{{ title }}</h3>
+    <h3>{{ title }} </h3>
+    <form>
+    <textarea placeholder="Add new task" v-model="newTask"> </textarea>
+    <p>{{newTask}}</p>
+    <button type="button" v-on:click="addTask">Add task {{tasks.length}}</button>
+     </form>
+    
+    <ul>
+    <li v-for="task in tasks">{{task}}</li>
+
+     </ul>
+
+    
+
   </div>
 </template>
 
@@ -8,8 +21,29 @@
 export default {
   data: function() {
     return {
-      title: 'My App'
+      title: 'My Task Manager',
+      newTask:'This is a SAMPLE',
+      
+      name: "Judy",
+      lastname:"Gichungu",
+      tasks:[
+
+
+
+      
+      ]
+
     }
+  },
+  methods:{
+  	addTask(){
+
+  		
+  		this.tasks.unshift(this.newTask);
+  		this.newTask="";
+  		
+
+  	}
   }
 }
 </script>
